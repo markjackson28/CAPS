@@ -3,6 +3,7 @@
 
 const events = require('../event-pool');
 
+// event listerner
 events.on('pickup', handleDelivery);
 
 function handleDelivery(payload) {
@@ -10,6 +11,7 @@ function handleDelivery(payload) {
     console.log(`DRIVER: picked up ${payload.orderID}`);
     events.emit('in-transit', payload);
   }, 1000);
+
 
   setTimeout(() => {
     console.log(`DRIVER: delivered up ${payload.orderID}`);

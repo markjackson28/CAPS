@@ -13,6 +13,7 @@ setInterval(() => {
   events.emit('pickup', newOrder);
 }, 5000);
 
+// event listerner
 events.on('delivered', handleDelivery);
 
 function handleDelivery(payload) {
