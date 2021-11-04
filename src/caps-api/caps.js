@@ -15,3 +15,5 @@ const capsRoutes = require('./capsRoutes');
 app.use(capsRoutes);
 
 app.listen(PORT, () => console.log(`Server is up on port ${PORT}`));
+
+module.exports = { app }
