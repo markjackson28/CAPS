@@ -4,8 +4,7 @@
   "description": "",
   "main": "caps.js",
   "scripts": {
-    "test": "jest --coverage",
-    "test-watch": "jest --watchAll --coverage"
+    "test": "NODE_ENV=test jest --coverage --silent --forceExit"
   },
   "keywords": [],
   "author": "",
