@@ -30,7 +30,7 @@ router.post('/in-transit', (req, res) => {
     req.body = newOrder;
   }
   socket.emit('in-transit', req.body);
-  socket.emit('join', req.body.store);
+  // socket.emit('join', req.body.store);
   res.status(200).send(`In-transit for order# ${JSON.stringify(req.body.orderID)}`);
 });
 
@@ -40,7 +40,7 @@ router.post('/delivered', (req, res) => {
     req.body = newOrder;
   }
   socket.emit('delivered', req.body);
-  socket.emit('join', req.body.store);
+  // socket.emit('join', req.body.store);
   res.status(200).send(`Delivered order# ${JSON.stringify(req.body.orderID)}`);
 });
 

@@ -1,6 +1,12 @@
 'use strict';
 
+const uuid = require('uuid').v4;
 const io = require('socket.io')(3000);
+
+// Queue
+const messages = {};
+
+
 io.on('connection', (socket) => {
   console.log('CORE', socket);
 });
@@ -17,9 +23,13 @@ caps.on('connection', (socket) => {
   });
 
   // Pickup Event
-  socket.on('pickup', (payload) => {
-    logger('pickup', payload);
-    caps.emit('pickup', payload);
+  socket.on('pickup', (message) => {
+    let messageID = uuid();
+    messages['pickup']['driver'][messageID] = message.payload;
+    io.in('driver').emit('pickup', { messageID, payload: messages.payload });
+    console.log(messages);
+    // logger('pickup', payload);
+    // caps.emit('pickup', payload);
   });
   // In-Transit Event
   socket.on('in-transit', (payload) => {
